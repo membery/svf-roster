@@ -7,11 +7,11 @@ body {
 }
 
 .clearfix:before, .clearfix:after {
-  content: " ";
-  display: table; 
+	content: " ";
+	display: table; 
 }
 .clearfix:after {
-  clear: both; 
+	clear: both; 
 }
 
 #main-wrapper{
@@ -184,4 +184,10 @@ table th{
 	h3{
 		border-bottom: 1px solid #000000;
 	}
+	
+	.no-print, .no-print *
+		{
+				display: none !important;
+		}
+
 }

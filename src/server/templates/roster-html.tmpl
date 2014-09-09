@@ -23,7 +23,15 @@
 
 </head>
 	<body>
+		
+		
 		<div id="main-wrapper">
+		
+		<FORM> 
+		      <INPUT Type="button" VALUE="Spať" class='no-print' onClick="history.go(-1);return true;">
+		      <INPUT Type="button" VALUE="Tlač" class='no-print' onClick="window.print();return true;">
+		</FORM>
+		
 			<header>
 				<img src="/img/logo.jpg" alt="SLOVENSKÁ VOLEJBALOVÁ FEDERÁCIA" />
 				<span>
@@ -65,7 +73,7 @@
 						</table>
 					</td>
 					<td class="detail-manager">
-						<h3>TRÉNERY</h3>
+						<h3>TRÉNERI</h3>
 						<table>
 							<tr>
 								<th>Tréner</th><td>{{roster.coach.name}}</td>
