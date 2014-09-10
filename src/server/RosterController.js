@@ -87,7 +87,7 @@ var RosterController = function(mongoDriver) {
 		
 		async.parallel(toCall, function (err){
 			if (err){
-				log.(err);
+				log.err(err);
 				res.send(500);
 				return;
 			}
