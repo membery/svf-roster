@@ -181,7 +181,7 @@ var RosterController = function(mongoDriver) {
 							roster.gender='Ženy';
 						}
 						roster.players=players;
-						roster.lastModification=convertDate(data.baseData.lastModification);
+						roster.lastModification=data.baseData.lastModification;
 						var page=renderService.render(renderModule.templates.ROSTER,{roster:roster,hash:hash.sha1(JSON.stringify(roster))});
 						res.send(200,page);
 					} );
