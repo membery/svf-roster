@@ -161,7 +161,19 @@ var RosterController = function(mongoDriver) {
 								}
 								
 								if (data && data.length > 0) {
-								localPlayer.note = (data[0].baseData.typeOfTransfer || '') + ':' + (convertDate(data[0].baseData.dateTo) || '') ;
+								var ttype = data[0].baseData.typeOfTransfer || '';
+								if (ttype === 'hosťovanie') {
+									ttype = 'H';
+								} else if (ttype === 'zahr. transfér') {
+									ttype = 'T'
+								} else {
+									ttype = '';
+								}
+								if (ttype.length > 0) {
+									localPlayer.note = ttype + ':' + (convertDate(data[0].baseData.dateTo) || '') ;
+								} else {
+									localPlayer.note = '';
+								}
 								} else {
 									localPlayer.note = '';
 								}
