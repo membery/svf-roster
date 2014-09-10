@@ -1,3 +1,14 @@
+@font-face {
+	font-family: 'icon';
+	src:url('../font/icon.eot?-4ip0jl');
+	src:url('../font/icon.eot?#iefix-4ip0jl') format('embedded-opentype'),
+		url('../font/icon.woff?-4ip0jl') format('woff'),
+		url('../font/icon.ttf?-4ip0jl') format('truetype'),
+		url('../font/icon.svg?-4ip0jl#icon') format('svg');
+	font-weight: normal;
+	font-style: normal;
+}
+
 body {
 	font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
 	font-size: 14px;
@@ -84,7 +95,7 @@ form label span{
 }
 
 a{
-	color: #333;
+	color: blue;
 }
 
 a:hover{
@@ -158,10 +169,98 @@ table th{
 	white-space: nowrap;
 }
 
+form.actions{
+	position: absolute;
+	right: 17px;
+	top: 10px;
+}
+
+form.actions .button{
+	display: inline-block;
+	margin-bottom: 5px;
+	/*float: left;*/
+	/*width: 80px;*/
+	/*clear:both;*/
+}
+
+form.actions .button:before{
+	font-family: 'icon';
+	speak: none;
+	font-style: normal;
+	font-weight: normal;
+	font-variant: normal;
+	text-transform: none;
+	line-height: 1;
+
+	/* Better Font Rendering =========== */
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+	color: #ffffff;
+	margin-right: 10px;
+}
+
+form.actions .button.print:before{
+	content: "\e601";
+}
+
+form.actions .button.back:before{
+	content: "\e600";
+}
+
+
+form.actions .button{
+	border: none;
+	background: none;
+	color: #333;
+	text-align: right;
+	width: auto;
+	padding: 0px;
+	padding-left: 10px;
+	/*float: right;*/
+	color: blue;
+	margin: 0px
+}
+
+form.actions .button:hover{
+	/*background-color: #f7a12d;
+	color: #ffffff;*/
+}
+
+form.actions .button span{
+	text-decoration: underline;
+}
+
+form.actions .button:hover span{
+	text-decoration: none;
+}
+orm.actions .button:hover:before{
+	background-color: #f7a12d;
+	border: 1px solid #FFA801;
+}
+
+form.actions .button:before{
+	/*background-color: #d80030;*/
+	/*border: 1px solid #ff0000;*/
+	color: blue;
+	/*padding: 10px;*/
+	padding-right: 5px;
+	margin: 0px;
+	margin-left: 0px;
+}
+
+form.actions .button:first-child{
+	margin-right: 10px;
+}
+
 @media print {
 	@page {
 		size: auto;
-		margin: 10mm 15mm 15mm 20mm; 
+		/*margin: 10mm 15mm 15mm 20mm; */
+		margin: 0px;
+	}
+	
+	body{
+		padding: 10mm 15mm 15mm 20mm; 
 	}
 	
 	*{

@@ -4,7 +4,7 @@
 <!--[if IE 7 ]>    <html class="ie ie7 ie-lt10 ie-lt9 ie-lt8 no-js" lang="en"> <![endif]-->
 <!--[if IE 8 ]>    <html class="ie ie8 ie-lt10 ie-lt9 no-js" lang="en"> <![endif]-->
 <!--[if IE 9 ]>    <html class="ie ie9 ie-lt10 no-js" lang="en"> <![endif]-->
-<!--[if gt IE 9]><!--><html class="no-js" lang="en"><!--<![endif]-->
+<!--[if gt IE 9]><!--><html class="no-js" lang="en" moznomarginboxes mozdisallowselectionprint><!--<![endif]-->
 
 <head>
 	<meta charset="utf-8">
@@ -27,10 +27,9 @@
 		
 		<div id="main-wrapper">
 		
-		<FORM> 
-		      <INPUT Type="button" VALUE="Spať" class='no-print' onClick="history.go(-1);return true;">
-		      <INPUT Type="button" VALUE="Tlač" class='no-print' onClick="window.print();return true;">
-		</FORM>
+			<FORM class="actions no-print "> 
+				<button class='button back' onClick="history.go(-1);return true;"><span>Spať</span></button>|<button class='button print' onClick="window.print();return true;"><span>Tlač</span></button>
+			</FORM>
 		
 			<header>
 				<img src="/img/logo.jpg" alt="SLOVENSKÁ VOLEJBALOVÁ FEDERÁCIA" />
