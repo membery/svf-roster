@@ -195,7 +195,12 @@ var RosterController = function(mongoDriver) {
 							roster.gender='Ženy';
 						}
 						roster.players=players;
-						roster.lastModification=data.baseData.lastModification;
+
+						var d= new Date(data.baseData.lastModification);
+						var strDate=''.concat(d.getDate(), '.', d.getMonth() + 1, '.' + d.getFullYear(), ' ', d.getHours(), ':', 
+							(''.concat(d.getMinutes()).length === 1 ? '0'+d.getMinutes():d.getMinutes()), ':',
+							(''.concat(d.getSeconds()).length === 1 ? '0'+d.getSeconds() : d.getSeconds()));
+						roster.lastModification= strDate;
 						var page=renderService.render(renderModule.templates.ROSTER,{roster:roster,hash:hash.sha1(JSON.stringify(roster))});
 						res.send(200,page);
 					} );
