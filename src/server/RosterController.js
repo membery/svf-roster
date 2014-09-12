@@ -70,7 +70,7 @@ var RosterController = function(mongoDriver) {
 		toCall.push(function(callback){ competitionDao.list({},function(err,data){ if (err) {callback(err);return; } competitions=data;callback(); });} );
 		toCall.push(function(callback){ clubDao.list(qf,function(err,data){ if (err) {callback(err);return; } clubs=data;callback(); });} );	
 
-		if (clubId || seasonId || compId)	{
+		if (seasonId || compId)	{
 			var rosterqf=QueryFilter.create();
 			if (clubId){
 				rosterqf.addCriterium('baseData.club.oid','eq',clubId);

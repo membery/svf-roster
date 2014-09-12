@@ -58,6 +58,7 @@
 					<label>
 						<span>klub</span>
 						<select name="club">
+							<option></option>
 							{% for club in clubs %}
 							<option value="{{club.id}}" {%if selectedClub==club.id%} selected {%endif%}>{{club.club.name}}</option>
 							{% endfor %}
