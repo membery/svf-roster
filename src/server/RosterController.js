@@ -91,6 +91,31 @@ var RosterController = function(mongoDriver) {
 				res.send(500);
 				return;
 			}
+
+			var i,j;
+
+			if (rosters) {
+				for (i = 0; i < rosters.length; ++i) {
+					for (j = 0; j < clubs.length; ++j) {
+						if (rosters[i].baseData.club.oid === clubs[j].id) {
+							rosters[i].baseData.club.refData = {name: clubs[j].club.name};
+							break;
+						}
+					}
+					for (j = 0; j < seasons.length; ++j) {
+						if (rosters[i].baseData.season.oid === seasons[j].id) {
+							rosters[i].baseData.season.refData = {name: seasons[j].baseData.name};
+							break;
+						}
+					}
+					for (j = 0; j < competitions.length; ++j) {
+						if (rosters[i].baseData.competition.oid === competitions[j].id) {
+							rosters[i].baseData.competition.refData = {name: competitions[j].baseData.name};
+							break;
+						}
+					}
+				}
+			}
 			var page=renderService.render(renderModule.templates.SEARCH,{seasons:seasons,competitions:competitions,clubs:clubs,rosters:rosters,selectedClub:clubId,selectedSeason:seasonId,selectedComp:compId});
 			res.send(200,page);
 		} );
