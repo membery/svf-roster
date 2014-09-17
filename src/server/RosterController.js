@@ -139,7 +139,7 @@ var RosterController = function(mongoDriver) {
 				toCall.push(function(callback){ seasonDao.get(data.baseData.season.oid,function(err,data){ if (err) {callback(err);return;} roster.season=data.baseData.name;callback(); });} );
 				toCall.push(function(callback){ competitionDao.get(data.baseData.competition.oid,function(err,data){ if (err) {callback(err);return;} roster.competition=data.baseData.name;callback(); });} );
 
-				if (data.coaches.aCoach1.oid) {
+				if (data.coaches.coach.oid) {
 					toCall.push(function(callback){ peopleDao.get(data.coaches.coach.oid,function(err,data){ if (err) {callback(err);return;} roster.coach={}; roster.coach.name=data.baseData.surName + ' '+ data.baseData.name; roster.coach.license=((data.coach && data.coach.coachLicense) || ' ') +' / '+ ((data.coach && data.coach.coachLicenseType) || ' ') ;callback(); });} );
 				}
 
