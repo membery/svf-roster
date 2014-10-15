@@ -172,43 +172,44 @@ var RosterController = function(mongoDriver) {
 
 
 				data.listOfPlayers.players.map(function(item){
-					item.id=index++;
-					toCall.push(function(callback){  peopleDao.get(item.oid,function(err,data){
-						if (err) {callback(err);return;} 
-						var player={surName:data.baseData.surName,name: data.baseData.name,birthDate: convertDate(data.baseData.birthDate), license: data.player.playerLicense}; 
-						players[item.id]= player;
-						var pqf = QueryFilter.create();
-						
-						pqf.addCriterium('baseData.player.oid', 'eq', data.id);
-						pqf.addCriterium('baseData.stateOfTransfer', 'eq', 'schválený');
-						(function(localPlayer, callback) {
-							transferDao.list(pqf, function(err, data) {
-								if (err) {
-									callback(err);
-								}
-								
-								if (data && data.length > 0) {
-								var ttype = data[0].baseData.typeOfTransfer || '';
-								if (ttype === 'hosťovanie') {
-									ttype = 'H';
-								} else if (ttype === 'zahr. transfér') {
-									ttype = 'T'
-								} else {
-									ttype = '';
-								}
-								if (ttype.length > 0) {
-									localPlayer.note = ttype + ':' + (convertDate(data[0].baseData.dateTo) || '') ;
-								} else {
-									localPlayer.note = '';
-								}
-								} else {
-									localPlayer.note = '';
-								}
-								callback();
-							});
-						})(player, callback);
-					});
-				} );	
+					if (item && item.oid) {
+						item.id=index++;
+						toCall.push(function(callback){  peopleDao.get(item.oid,function(err,data){
+							if (err) {callback(err);return;} 
+							var player={surName:data.baseData.surName,name: data.baseData.name,birthDate: convertDate(data.baseData.birthDate), license: data.player.playerLicense}; 
+							players[item.id]= player;
+							var pqf = QueryFilter.create();
+							
+							pqf.addCriterium('baseData.player.oid', 'eq', data.id);
+							pqf.addCriterium('baseData.stateOfTransfer', 'eq', 'schválený');
+							(function(localPlayer, callback) {
+								transferDao.list(pqf, function(err, data) {
+									if (err) {
+										callback(err);
+									}
+									
+									if (data && data.length > 0) {
+									var ttype = data[0].baseData.typeOfTransfer || '';
+									if (ttype === 'hosťovanie') {
+										ttype = 'H';
+									} else if (ttype === 'zahr. transfér') {
+										ttype = 'T'
+									} else {
+										ttype = '';
+									}
+									if (ttype.length > 0) {
+										localPlayer.note = ttype + ':' + (convertDate(data[0].baseData.dateTo) || '') ;
+									} else {
+										localPlayer.note = '';
+									}
+									} else {
+										localPlayer.note = '';
+									}
+									callback();
+								});
+							})(player, callback);
+						});});
+					}
 				});
 
 
